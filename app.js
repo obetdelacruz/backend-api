@@ -1,15 +1,15 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
+import mongoose from "mongoose";
 import config from "./utils/config.js";
 import personRouter from "./routes/personRouter.js";
 
 const app = express();
 
-async function connectToDB(url) {
+const connectToDB = async (url) => {
   await mongoose.connect(url);
-  console.log("Connected to MongoDB");
-}
+  console.log("Connected to DB");
+};
 
 connectToDB(config.MONGODB_URI);
 
