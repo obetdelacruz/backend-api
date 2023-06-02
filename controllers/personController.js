@@ -6,6 +6,7 @@ async function getPersons(_req, res) {
   return res.json(persons);
 }
 
+// Get Person
 async function getPerson(req, res) {
   const id = req.params.id;
   const person = await Person.findById(id);
@@ -13,6 +14,7 @@ async function getPerson(req, res) {
   return res.json(person);
 }
 
+// Create Person
 async function createPerson(req, res) {
   const { name, number } = req.body;
   const person = new Person({
@@ -24,6 +26,7 @@ async function createPerson(req, res) {
   return res.status(201).json(savedPerson);
 }
 
+// Update Person
 async function updatePerson(req, res) {
   const id = req.params.id;
   const { name, number } = req.body;
@@ -40,12 +43,14 @@ async function updatePerson(req, res) {
   res.json(updatedPerson);
 }
 
+//Delete Person
 async function deletePerson(req, res) {
   const id = req.params.id;
   await Person.findByIdAndDelete(id);
   res.status(204).end();
 }
 
+//Export Default
 export default {
   getPersons,
   getPerson,
