@@ -7,24 +7,43 @@ async function getPersons(_req, res) {
 }
 
 // Get Person
-async function getPerson(req, res) {
-  const id = req.params.id;
-  const person = await Person.findById(id);
-
-  return res.json(person);
+async function getPerson(req, res, next) {
+  try {
+    const {name, number} = req.body; 
+    const personExists = await Person.findOne{{name}} = await Person.findById(id);
+  
+    return res.json(person);
+  }
+  
 }
 
 // Create Person
-async function createPerson(req, res) {
+
+async function createPerson(req, res, next) {
+    try {
   const { name, number } = req.body;
-  const person = new Person({
-    name,
-    number,
+  const personExists = await Person.findOne({name}) 
+    
+  if (personExists) 
+  return res.status(400).json({
+    error: "Name and number are required"
   });
 
+  const person = new Person(
+    name,
+    number
+
+  );
+
   const savedPerson = await person.save();
+
   return res.status(201).json(savedPerson);
+} catch(error){
+  next(error);
+  }
+
 }
+
 
 // Update Person
 async function updatePerson(req, res) {
