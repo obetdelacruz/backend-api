@@ -5,13 +5,13 @@ const personSchema = new mongoose.Schema({
     type: String,
     minLength: 3,
     required: true,
-}, 
+  },
   number: {
     type: String,
     minLength: 8,
     required: true,
-  }
-);
+  },
+});
 
 personSchema.set("toJSON", {
   transform: (_document, returnedObject) => {
