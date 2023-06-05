@@ -20,7 +20,7 @@ async function getPerson(req, res, next) {
 // Create Person
 
 async function createPerson(req, res, next) {
-    try {
+  try {
   const { name, number } = req.body;
   const personExists = await Person.findOne({name}) 
     
