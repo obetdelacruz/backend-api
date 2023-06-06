@@ -1,5 +1,7 @@
-export default function(state = [], action) {
-    try {
-        return
-    }
+export default function isString(str) {
+  try {
+    return typeof str === "string";
+  } catch (e) {
+    return false;
+  }
 }

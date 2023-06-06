@@ -1,6 +1,6 @@
 import express from "express";
-import cors from "cors";
 import mongoose from "mongoose";
+import cors from "cors";
 import config from "./utils/config.js";
 import personRouter from "./routes/personRouter.js";
 import userRouter from "./routes/userRouter.js";
@@ -9,10 +9,10 @@ import unknownEndpoint from "./middlewares/unknownEndpoint.js";
 
 const app = express();
 
-const connectToDB = async (url) => {
+async function connectToDB(url) {
   await mongoose.connect(url);
   console.log("Connected to DB");
-};
+}
 
 connectToDB(config.MONGODB_URI);
 
